@@ -176,6 +176,11 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ProfileController.cs" />
     <Compile Include="Controllers\ServicesController.cs" />
+    <Compile Include="Migrations\201805241716548_update1.cs" />
+    <Compile Include="Migrations\201805241716548_update1.Designer.cs">
+      <DependentUpon>201805241716548_update1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TransactionHistoryViewModel.cs" />
     <Compile Include="Controllers\TransactionsHistoryController.cs" />
     <Compile Include="Controllers\TransfersController.cs" />
     <Compile Include="Extensions\ClaimsExtensions.cs" />
@@ -657,6 +662,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201805230702347_update.resx">
       <DependentUpon>201805230702347_update.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201805241716548_update1.resx">
+      <DependentUpon>201805241716548_update1.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

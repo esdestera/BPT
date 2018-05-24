@@ -78,6 +78,8 @@ namespace WebApplication.Models
         /// gets or sets the transaction name.
         /// </summary>
         public string TransactionName { get; set; }
+
+        public DateTime Created { get; set; }
     }
 
 }
