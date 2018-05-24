@@ -1,0 +1,66 @@
+﻿@using System.Linq;
+@using WebApplication.Models;
+@model WebApplication.Models.Account
+@{
+
+}
+
+<style>
+    .a {
+        height: 35px;
+        width: 350px;
+    }
+
+    .b {
+        margin: 5px;
+        text-align: center;
+    }
+
+    .c {
+        margin: 5px;
+        text-align: center;
+        height: 35px;
+        width: 150px;
+    }
+
+    .label {
+        font-size: 15px;
+    }
+</style>
+
+@{ var user = System.Web.HttpContext.Current.User.Identity; }
+
+@{
+    var db = new ApplicationDbContext();
+    var currentUser = db.Users.Where(m => m.UserName == User.Identity.Name).FirstOrDefault();
+    var accounts = db.Accounts.Where(m => m.UserId == currentUser.Id);
+    var ibanList = accounts.Select(m => m.Iban).ToList();
+    var iban = "";
+    var theAccount = new Account();
+
+}
+
+
+<br /><br /><br /><br /><br />
+<div align="center">
+    <table align="center" class="b">
+        <tr>
+            <td>
+                <img src="~/Images/photo7.png" alt="Sample Photo" width="50" height="70" />
+            </td>
+            <td>
+                <p>
+                    Available Balances:
+                </p>
+            
+                @foreach(var account in accounts)
+                {
+                    
+                    <p>@account.Currency - @account.Iban - @account.Balance.ToString("0.00")</p>
+                       
+                }
+            </td>
+        </tr>
+    </table>
+</div>
+

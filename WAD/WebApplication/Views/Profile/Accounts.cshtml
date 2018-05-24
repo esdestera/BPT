@@ -1,0 +1,70 @@
+﻿@model WebApplication.Models.AccountsViewModel
+
+<div>
+
+    <ul class="nav nav-tabs" role="tablist">
+        <li role="presentation" class="active"><a href="#accounts" aria-controls="home" role="tab" data-toggle="tab">My accounts</a></li>
+        <li role="presentation"><a href="#newaccount" aria-controls="profile" role="tab" data-toggle="tab">New account</a></li>
+
+    </ul>
+
+    <div class="tab-content">
+        <div role="tabpanel" class="tab-pane active" id="accounts">
+
+            <table class="table">
+                <tr>
+                    <th>
+                        IBAN
+                    </th>
+                    <th>
+                        Balance
+                    </th>
+                    <th>
+                        Card limit
+                    </th>
+                    <th>
+                        Currency
+                    </th>
+                    <th>
+                       UserId
+                    </th>
+                    <th></th>
+                </tr>
+                
+                @foreach (var item in Model.Accounts)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Iban)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Balance)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CardLimit)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Currency)
+                </td>
+                <td>
+
+                    @Html.DisplayFor(modelItem => item.UserId)
+                </td>
+                
+            </tr>
+}
+                </table>
+
+        </div>
+        
+
+        <div role="tabpanel" class="tab-pane" id="newaccount">
+            <br>
+                @Html.Partial("_PartialCreateAccount", Model.CreateAccountVM);
+
+
+        </div>
+
+  
+    </div>
+</div>

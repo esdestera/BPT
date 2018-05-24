@@ -1,0 +1,43 @@
+﻿@model WebApplication.Models.UserViewModel
+@{
+
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div>
+    <h4>Account</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.UserName)
+        </dt>
+
+        <dd>
+            @Html.EditorFor(model => model.UserName, new { htmlAttributes = new { @class = "form-control", @readonly = true } })
+            <br>
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Email)
+        </dt>
+
+        <dd>
+            @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control", @readonly = true } })
+            <br>
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NameIdentifier)
+        </dt>
+
+        <dd>
+            @Html.EditorFor(model => model.NameIdentifier, new { htmlAttributes = new { @class = "form-control", @readonly = true } })
+            <br>
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit") 
+</p>

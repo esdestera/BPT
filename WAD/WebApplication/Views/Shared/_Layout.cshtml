@@ -1,0 +1,142 @@
+﻿@using WebApplication.Extensions
+<!DOCTYPE html>
+<style>
+    .bckg {
+        background: repeating-linear-gradient( -55deg, #222, #222 10px, #333 10px, #333 20px );
+        background-size: 16px 16px;
+        color: white;
+    }
+    select {
+        background-color: #005580;
+    }
+    input {
+        background-color: #005580;
+    }
+</style>
+<html>
+<head>
+    <link rel="shortcut icon" href="~/Images/favicon2.ico" type="image/x-icon" />
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>WebApplication</title>
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+
+    @Styles.Render("~/AdminLTE/plugins/font-awesome/css")
+    @Styles.Render("~/AdminLTE/plugins/ionicons/css")
+    @Styles.Render("~/AdminLTE/bootstrap/css")
+    @Styles.Render("~/AdminLTE/dist/css")
+    @Styles.Render("~/AdminLTE/dist/css/skins")
+
+</head>
+    <body class="hold-transition skin-blue sidebar-mini">
+        <div class="wrapper">
+            <header class="main-header" style="background-color:black;">
+                <a href="@Url.Action("Home", "Home")" class="logo">
+                    <span class="logo-mini"><b>W</b>eb</span>
+                    <span class="logo-lg"><b>TMS</b></span>
+                </a>
+                <nav class="navbar navbar-static-top" role="navigation">
+                    <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
+                        <span class="sr-only">Toggle navigation</span>
+                    </a>
+                    <div class="navbar-custom-menu">
+                        <ul class="nav navbar-nav">
+
+                            @Html.Partial("_LoginPartial")
+                        </ul>
+                    </div>
+                </nav>
+            </header>
+            <aside class="main-sidebar">
+                <section class="sidebar">
+
+                    <ul class="sidebar-menu">
+                        <li class="header">MAIN NAVIGATION</li>
+
+                        <li id="left-sidebar-menu-widgets">
+                            <a href="@Url.Action("Home", "Home")">
+                                <i class="fa fa-th"></i> <span>Home</span>
+                            </a>
+                        </li>
+                        <li id="left-sidebar-menu-charts" class="treeview">
+                            <a href="#">
+                                <i class="fa fa-pie-chart"></i>
+                                <span>Profile</span>
+                                <i class="fa fa-angle-left pull-right"></i>
+                            </a>
+                            <ul class="treeview-menu">
+                                <li id="left-sidebar-menu-charts-chartjs"><a href="@Url.Action("Profile", "Profile")"><i class="fa fa-circle-o"></i> Profile</a></li>
+                                <li id="left-sidebar-menu-charts-morris"><a href="@Url.Action("Accounts", "Profile")"><i class="fa fa-circle-o"></i> My accounts</a></li>
+                            </ul>
+                        </li>
+                        <li id="left-sidebar-menu-elements" class="treeview">
+                            <a href="#">
+                                <i class="fa fa-laptop"></i>
+                                <span>Transfers</span>
+                                <i class="fa fa-angle-left pull-right"></i>
+                            </a>
+                            <ul class="treeview-menu">
+                                <li id="left-sidebar-menu-elements-general"><a href="@Url.Action("ToMyAccounts", "Transfers")"><i class="fa fa-circle-o"></i> To my accounts</a></li>
+                                <li id="left-sidebar-menu-elements-icons"><a href="@Url.Action("ToOthers", "Transfers")"><i class="fa fa-circle-o"></i> To other accounts</a></li>
+                                <li id="left-sidebar-menu-elements-buttons"><a href="@Url.Action("MyTransfers", "Transfers")"><i class="fa fa-circle-o"></i> My transfers</a></li>
+                            </ul>
+                        </li>
+                        <li id="left-sidebar-menu-forms" class="treeview">
+                            <a href="#">
+                                <i class="fa fa-edit"></i> <span>Services</span>
+                                <i class="fa fa-angle-left pull-right"></i>
+                            </a>
+                            <ul class="treeview-menu">
+                                <li id="left-sidebar-menu-forms-general"><a href="@Url.Action("Bills", "Services")"><i class="fa fa-circle-o"></i> Bills</a></li>
+                                <li id="left-sidebar-menu-forms-advanced"><a href="@Url.Action("Taxes", "Services")"><i class="fa fa-circle-o"></i> Taxes</a></li>
+                                <li id="left-sidebar-menu-forms-editors"><a href="@Url.Action("PhoneCreditCharge", "Services")"><i class="fa fa-circle-o"></i> Phone credit charge</a></li>
+                                <li id="left-sidebar-menu-forms-editors"><a href="@Url.Action("MyServices", "Services")"><i class="fa fa-circle-o"></i> My services</a></li>
+                            </ul>
+                        </li>
+                        <li id="left-sidebar-menu-calendar">
+                            <a href="@Url.Action("TransactionHistory", "TransactionsHistory")">
+                                <i class="fa fa-calendar"></i>
+                                <span>Transaction history</span>
+                            </a>
+                        </li>
+                        <li id="left-sidebar-menu-mailbox" class="treeview">
+                            <a href="#">
+                                <i class="fa fa-envelope"></i> <span>Customer services</span>
+                                <i class="fa fa-angle-left pull-right"></i>
+                            </a>
+                            <ul class="treeview-menu">
+                                <li id="left-sidebar-menu-mailbox-inbox"><a href="@Url.Action("FAQ", "CustomerServices")">FAQ </a></li>
+                                <li id="left-sidebar-menu-mailbox-compose"><a href="@Url.Action("Map", "CustomerServices")">Map</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </section>
+            </aside>
+            <div class="content-wrapper bckg">
+                <section class="content-header">
+                    <h1>
+                        @ViewBag.Title
+                        <small>@ViewBag.SubTitle</small>
+                    </h1>
+                    <ol class="breadcrumb">
+                        <li><a href="#"><i class="fa fa-dashboard"></i>@ViewBag.SubTitle</a></li>
+                        <li class="active">@ViewBag.Title</li>
+                    </ol>
+                </section>
+                <section class="content">
+                    @RenderBody()
+                </section>
+            </div>
+        </div>
+
+
+        @Scripts.Render("~/AdminLTE/plugins/jquery/js")
+        @RenderSection("menu", required: false)
+        @Scripts.Render("~/AdminLTE/bootstrap/js")
+        @Scripts.Render("~/AdminLTE/plugins/slimscroll/js")
+        @Scripts.Render("~/AdminLTE/plugins/fastclick/js")
+        @Scripts.Render("~/Scripts/Shared/_Layout")
+        @Scripts.Render("~/AdminLTE/dist/js")
+        @RenderSection("scripts", required: false)
+    </body>
+</html>

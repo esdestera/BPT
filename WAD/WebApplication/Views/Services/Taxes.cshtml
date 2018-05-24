@@ -1,0 +1,103 @@
+﻿@{
+
+}
+
+<style>
+    table, th, td {
+        border: 1px;
+        padding: 10px;
+    }
+
+    table {
+        border-spacing: 15px;
+    }
+
+    .a {
+        height: 27px;
+        width: 160px
+    }
+</style>
+
+@{
+    if (IsPost)
+    {
+        string Name = Request.Form["tax"];
+        string IBAN = Request.Form["ISBN"];
+        string From = Request.Form["From"];
+        string Amount = Request.Form["Amount"];
+        string Details = Request.Form["Details"];
+
+        <text>
+            You entered: <br />
+            Type of the tax: @Name <br />
+            IBAN: @IBAN <br />
+            From:@From <br />
+            The amount of money:@Amount <br />
+            Details:@Details <br />
+        </text>
+    }
+}
+<h2 align="center">Pay a tax</h2>
+<hr />
+<div align="center">
+    <form method="post" class="b">
+        <fieldset>
+            <table>
+                <tr>
+
+                    <td><label for="Tax">Type of the tax:</label></td>
+                    <td>
+                        <select id="Tax" name="Tax" class="a">
+                            <option value="0">Tax name</option>
+                        </select>
+                    </td>
+
+                </tr>
+                <tr>
+
+                    <td><label for="IBAN">IBAN:</label></td>
+                    <td><input type="text" name="IBAN" value="" /></td>
+
+                </tr>
+
+                <tr>
+
+                    <td><label for="From">From:</label></td>
+                    <td>
+                        <select id="Account" name="Account" class="a">
+                            <option value="0">Account1</option>
+                            <option value="1">Account2</option>
+                            <option value="2">Account2</option>
+                        </select>
+                    </td>
+
+                </tr>
+                <tr>
+
+                    <td><label for="Amount">The amount of money:</label></td>
+                    <td><input type="text" name="Amount" value="" /></td>
+
+                </tr>
+                <tr>
+
+                    <td><label for="Details">Details:</label></td>
+                    <td><input type="text" Name="Details" value="" /></td>
+
+                </tr>
+                <tr>
+                    <td><input type="checkbox" checked> Do you want to save this transaction to MyServices ? <br></td>
+                </tr>
+            </table>
+
+
+            <div>
+                <label>&nbsp;</label>
+                <br><br>
+                <input type="button" value="Cancel" onclick="window.location = 'http://localhost:51201/Home/Index'" class="cancel_button">
+                &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+                <input type="submit" value="Continue" class="submit" />
+            </div>
+        </fieldset>
+    </form>
+</div>
+

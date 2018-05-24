@@ -1,0 +1,13 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\WAD",
+    "\\WAD\\WebApplication",
+    "\\WAD\\WebApplication\\Views",
+    "\\WAD\\WebApplication\\Views\\Account",
+    "\\WAD\\WebApplication\\Views\\Home",
+    "\\WAD\\WebApplication\\Views\\Profile"
+  ],
+  "SelectedNode": "\\WAD\\WebApplication\\Views\\Account\\Login.cshtml",
+  "PreviewInSolutionExplorer": false
+}

@@ -1,0 +1,41 @@
+﻿@model WebApplication.Models.TransfersViewModel
+
+@{
+    ViewBag.Title = "My transfers";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+    @{ 
+        var db = new ApplicationDbContext();
+        var currentUser = db.Users.Where(m=>m.UserName == User.Identity.Name).FirstOrDefault();
+        var accounts = db.Accounts.Where(m =>m.UserId == currentUser.Id).ToList();
+        var trans = new List<Transaction>();
+        var transactions = new List<Transaction>();
+        foreach(var account in accounts)
+        {
+            trans = db.Transactions.Where(m => m.SenderId == account.AccountId).ToList();
+            if(trans != null)
+            {
+                foreach (var transaction in trans)
+                {
+                    if (transaction.SaveToMyTransfers == true)
+                    {
+                        transactions.Add(transaction);
+                    }
+                }
+            }
+
+        }
+    }
+<div align="center">
+    @foreach (var item in transactions)
+    {
+        var sender = db.Accounts.Where(m => m.AccountId == item.SenderId).FirstOrDefault();
+        var receiver = db.Accounts.Where(m => m.AccountId == item.ReceiverId).FirstOrDefault();
+        var transaction = string.Format(@item.TransactionName + "-" + @sender.Iban);
+        <br>
+        @Html.ActionLink(transaction, "FilledTransfer", new { id = item.TransactionId })
+    }
+</div>
+

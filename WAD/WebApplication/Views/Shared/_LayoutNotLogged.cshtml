@@ -1,0 +1,46 @@
+﻿@using WebApplication.Extensions
+<!DOCTYPE html>
+<style>
+    .bckg {
+        background: repeating-linear-gradient( -55deg, #222, #222 10px, #333 10px, #333 20px );
+        background-size: 16px 16px;
+        color: white;
+    }
+
+    select {
+        background-color: #005580;
+    }
+
+    input {
+        background-color: #005580;
+    }
+</style>
+<html>
+<head>
+    <link rel="shortcut icon" href="~/Images/favicon2.ico" type="image/x-icon" />
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>WebApplication</title>
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+
+    @Styles.Render("~/AdminLTE/plugins/font-awesome/css")
+    @Styles.Render("~/AdminLTE/plugins/ionicons/css")
+    @Styles.Render("~/AdminLTE/bootstrap/css")
+    @Styles.Render("~/AdminLTE/dist/css")
+    @Styles.Render("~/AdminLTE/dist/css/skins")
+
+</head>
+<body >
+    <section class="content">
+        @RenderBody()
+    </section>
+    @Scripts.Render("~/AdminLTE/plugins/jquery/js")
+    @RenderSection("menu", required: false)
+    @Scripts.Render("~/AdminLTE/bootstrap/js")
+    @Scripts.Render("~/AdminLTE/plugins/slimscroll/js")
+    @Scripts.Render("~/AdminLTE/plugins/fastclick/js")
+    @Scripts.Render("~/Scripts/Shared/_Layout")
+    @Scripts.Render("~/AdminLTE/dist/js")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

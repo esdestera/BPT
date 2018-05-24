@@ -1,0 +1,91 @@
+﻿
+@{
+
+}
+
+<style>
+    table, th, td {
+        border: 1px;
+        padding: 10px;
+    }
+
+    table {
+        border-spacing: 15px;
+    }
+
+    .a {
+        height: 27px;
+        width: 160px
+    }
+</style>
+
+@{
+    if (IsPost)
+    {
+        string Phone = Request.Form["Phone"];
+        string Network = Request.Form["Network"];
+        string Credit = Request.Form["Credit"];
+
+        <text>
+            You entered: <br />
+            Phone number: @Phone <br />
+            Network: @Network <br />
+            From:@Credit <br />
+        </text>
+    }
+}
+<h2 align="center">Recharge your phone credit</h2>
+<hr />
+<div align="center">
+    <form method="post" class="b">
+        <fieldset>
+            <table>
+                <tr>
+                    <div>
+                        <td><label for="Phone">Phone number:</label></td>
+                        <td><input type="text" name="Phone" value="" /></td>
+                    </div>
+                </tr>
+                <tr>
+                    <div>
+                        <td><label for="Network">Network:</label></td>
+                        <td>
+                            <select id="Network" name="Network" class="a">
+                                <option value="0">Vodafone</option>
+                                <option value="1">Orange</option>
+                                <option value="2">TeleKom</option>
+                            </select>
+                        </td>
+                    </div>
+                </tr>
+
+                <tr>
+                    <div>
+
+                        <td><label for="Credit">Credit:</label></td>
+                        <td>
+                            <select id="Credit" name="Credit" class="a">
+                                <option value="0">2 EUR</option>
+                                <option value="1">3 EUR</option>
+                                <option value="2">4 EUR</option>
+                                <option value="2">5 EUR</option>
+                                <option value="2">6 EUR</option>
+                                <option value="2">8 EUR</option>
+                            </select>
+                        </td>
+                    </div>
+                </tr>
+            </table>
+            <div>
+                <td><input type="checkbox" checked> Do you want to save this transaction to MyServices ? <br></td>
+            </div>
+            <div>
+                <label>&nbsp;</label>
+                <br></br>
+                <input type="button" value="Cancel" onclick="window.location = 'http://localhost:51201/Home/Index'" class="cancel_button">
+                &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+                <input type="submit" value="Continue" class="submit" />
+            </div>
+        </fieldset>
+    </form>
+</div>

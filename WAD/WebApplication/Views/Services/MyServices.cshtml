@@ -1,0 +1,64 @@
+﻿
+@{
+}
+
+<style>
+    table, th, td {
+        border: 1px;
+        padding: 10px;
+    }
+
+    table {
+        border-spacing: 15px;
+    }
+
+    .a {
+        height: 27px;
+        width: 160px
+    }
+</style>
+
+@{
+    if (IsPost)
+    {
+        string Services = Request.Form["Services"];
+
+        <text>
+            You entered: <br />
+            Phone number: @Services <br />
+        </text>
+    }
+}
+
+<h2 align="center">My services</h2>
+<hr />
+<div align="center">
+    <form method="post" class="b">
+        <fieldset>
+            <table>
+
+                <tr>
+
+                    <td><label for="Services">@Html.ActionLink("Water bill", "Bills", "Services")</label></td>
+
+                    <td><label for="Services">RON</label></td>
+
+                </tr>
+
+                <tr>
+
+                    <td><label for="Services">@Html.ActionLink("Phone charge", "PhoneCreditCharge", "Services")</label></td>
+                    <td><label for="Services">EUR </label></td>
+
+                </tr>
+
+                <tr>
+
+                    <td><label for="Services">@Html.ActionLink("Electric bill", "Bills", "Services")</label></td>
+                    <td><label for="Services">RON</label></td>
+
+                </tr>
+            </table>
+        </fieldset>
+    </form>
+</div>

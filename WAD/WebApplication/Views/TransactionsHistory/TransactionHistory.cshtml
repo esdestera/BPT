@@ -1,0 +1,81 @@
+﻿
+
+
+@{
+
+}
+<style>
+
+
+    tr.d {
+        background: #e6e6ff;
+        margin: 5px;
+        text-align: center;
+    }
+
+    [class^=arr-] {
+        border: solid black;
+        border-width: 0 .2em .2em 0;
+        display: inline-block;
+        padding: .20em;
+    }
+
+    .arr-right {
+        transform: rotate(-45deg);
+        -webkit-transform: rotate(-45deg);
+    }
+
+    .arr-left {
+        transform: rotate(135deg);
+        -webkit-transform: rotate(135deg);
+    }
+
+    table.t {
+        border-collapse: collapse;
+        width: 100%;
+    }
+</style>
+
+<h2 align="center">Transactions history</h2>
+    <hr />
+    <div class="table-responsive mailbox-messages">
+        <table class="table table-hover table-striped">
+            <tbody>
+                <tr>
+                    <th class="mailbox-name" style="background-color:black"><a href="#">IBAN</a></th>
+                    <th class="mailbox-name" style="background-color:black"><a href="#">Date</a></th>
+                    <th class="mailbox-name" style="background-color:black"><a href="#">Currency</a></th>
+                    <th class="mailbox-name" style="background-color:black"><a href="#">Amount</a></th>
+                    <th class="mailbox-name" style="background-color:black"><a href="#">In/Out</a></th>
+                </tr>
+                <tr>
+                    <td class="mailbox-name"><a href="#">IBAN1</a></td>
+                    <td class="mailbox-name"><a href="#">Date1</a></td>
+                    <td class="mailbox-name"><a href="#">Currency1</a></td>
+                    <td class="mailbox-name"><a href="#">Amount1</a></td>
+                    <td class="mailbox-name"><a href="#"><i class="arr-right"></i></a></td>
+                </tr>
+                <tr>
+                    <td class="mailbox-name"><a href="#">IBAN2</a></td>
+                    <td class="mailbox-name"><a href="#">Date2</a></td>
+                    <td class="mailbox-name"><a href="#">Currency2</a></td>
+                    <td class="mailbox-name"><a href="#">Amount2</a></td>
+                    <td class="mailbox-name"><a href="#"><i class="arr-left"></i></a></td>
+                </tr>
+                <tr>
+                    <td class="mailbox-name"><a href="#">IBAN3</a></td>
+                    <td class="mailbox-name"><a href="#">Date3</a></td>
+                    <td class="mailbox-name"><a href="#">Currency3</a></td>
+                    <td class="mailbox-name"><a href="#">Amount3</a></td>
+                    <td class="mailbox-name"><a href="#"><i class="arr-left"></i></a></td>
+                </tr>
+                <tr>
+                    <td class="mailbox-name"><a href="#">IBAN3</a></td>
+                    <td class="mailbox-name"><a href="#">Date3</a></td>
+                    <td class="mailbox-name"><a href="#">Currency3</a></td>
+                    <td class="mailbox-name"><a href="#">Amount3</a></td>
+                    <td class="mailbox-name"><a href="#"><i class="arr-right"></i></a></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
