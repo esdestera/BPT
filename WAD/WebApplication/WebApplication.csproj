@@ -180,6 +180,7 @@
     <Compile Include="Migrations\201805241716548_update1.Designer.cs">
       <DependentUpon>201805241716548_update1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Models\MyTransfersViewModel.cs" />
     <Compile Include="Models\TransactionHistoryViewModel.cs" />
     <Compile Include="Controllers\TransactionsHistoryController.cs" />
     <Compile Include="Controllers\TransfersController.cs" />
@@ -203,6 +204,7 @@
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\ProfileViewModel.cs" />
     <Compile Include="Models\Transaction.cs" />
+    <Compile Include="Models\TransactionInfoViewModel.cs" />
     <Compile Include="Models\TransfersViewModel.cs" />
     <Compile Include="Models\UserViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Configuration;
 using System.Data.Entity;
 using System.Linq;
@@ -25,9 +26,45 @@ namespace WebApplication.Controllers
         }
 
         [HttpGet]
-        public ActionResult MyTransfers(TransfersViewModel model)
+        public ActionResult MyTransfers()
         {
-            return View(model);
+            MyTransfersViewModel model = new MyTransfersViewModel();
+            model.Transactions = new List<TransactionInfoViewModel>();
+            var currentUser = db.Users.Where(m => m.UserName == User.Identity.Name).FirstOrDefault();
+            if(currentUser != null)
+            {
+                var accounts = db.Accounts.Where(m => m.UserId == currentUser.Id).ToList();
+                var trans = new List<Transaction>();
+                var transactions = new List<Transaction>();
+                foreach (var account in accounts)
+                {
+                    trans = db.Transactions.Where(m => m.SenderId == account.AccountId).ToList();
+                    if (trans != null)
+                    {
+                        foreach (var transaction in trans)
+                        {
+                            if (transaction.SaveToMyTransfers == true)
+                            {
+                                var transactionInfo = new TransactionInfoViewModel();
+                                transactionInfo.TransactionName = transaction.TransactionName;
+                                transactionInfo.SenderIban = account.Iban;
+                                var receiver = db.Accounts.Where(m => m.AccountId == transaction.ReceiverId).FirstOrDefault();
+                                transactionInfo.ReceiverIban = receiver.Iban;
+                                transactionInfo.ReceiverCurrency = receiver.Currency;
+                                transactionInfo.SenderCurrency = account.Currency;
+                                transactionInfo.TransactionId = transaction.TransactionId;
+                                model.Transactions.Add(transactionInfo);
+                            }
+                        }
+                    }
+
+                }
+
+                return View(model);
+            }
+
+            return RedirectToAction("InvalidUser", "Account");
+            
         }
 
         // GET: Transactions/Details/5
@@ -64,21 +101,21 @@ namespace WebApplication.Controllers
 
 
         [HttpGet]
-        public ActionResult FilledTransfer(int? id)
+        public ActionResult FilledTransfer(TransactionInfoViewModel model)
         {
-            TransfersViewModel model = new TransfersViewModel();
-            var transaction = db.Transactions.Where(m => m.TransactionId == id).FirstOrDefault();
+            TransfersViewModel filled = new TransfersViewModel();
+            var transaction = db.Transactions.Where(m => m.TransactionId == model.TransactionId).FirstOrDefault();
            if (transaction != null)
             {
                 var sender = db.Accounts.Where(m => m.AccountId.Equals(transaction.SenderId)).FirstOrDefault();
                 var receiver = db.Accounts.Where(m => m.AccountId.Equals(transaction.ReceiverId)).FirstOrDefault();
                 var destUser = db.Users.Where(m => m.Id.Equals(receiver.UserId)).FirstOrDefault();
-                model.DestIban = receiver.Iban;
-                model.SenderIban = sender.Iban;
-                model.Details = transaction.Details;
-                model.DestName = destUser.NameIdentifier;
-                model.Amount = 0;
-                return View("FilledTransfer", model);
+                filled.DestIban = receiver.Iban;
+                filled.SenderIban = sender.Iban;
+                filled.Details = transaction.Details;
+                filled.DestName = destUser.NameIdentifier;
+                filled.Amount = 0;
+                return View("FilledTransfer", filled);
             }
             else
             {
@@ -94,12 +131,19 @@ namespace WebApplication.Controllers
             if (account != null)
             {
                 var destUser = db.Users.Where(m => m.Id.Equals(account.UserId)).FirstOrDefault();
-                model.DestName = destUser.NameIdentifier;
-                return View("TransferToOthersConfirmation", model);
+                if(destUser != null)
+                {
+                    model.DestName = destUser.NameIdentifier;
+                    return View("TransferToOthersConfirmation", model);
+                }
+                else
+                {
+                    return View("InvalidUser", "Home");
+                }
             }
             else
             {
-                return RedirectToAction("ToOthers", "Transfers");
+                return RedirectToAction("InvalidDestAccount", "Transfers");
             }
         }
 

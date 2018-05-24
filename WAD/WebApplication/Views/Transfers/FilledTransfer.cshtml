@@ -23,7 +23,7 @@
             @Html.LabelFor(m => m.SenderIban, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
 
-                @Html.DropDownListFor(model => model.SenderIban, ddlItems, new { htmlAttributes = new { @class = "form-control", @disabled = "disabled" } })
+                @Html.DropDownListFor(model => model.SenderIban, ddlItems, new { htmlAttributes = new { @class = "form-control", @disabled = true } })
                 @Html.ValidationMessageFor(model => model.SenderIban, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -31,7 +31,7 @@
         <div class="form-group">
             @Html.LabelFor(m => m.DestIban, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.DestIban, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+                @Html.EditorFor(model => model.DestIban, new { htmlAttributes = new { @class = "form-control", @readonly = true } })
                 @Html.ValidationMessageFor(model => model.DestIban, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -39,7 +39,7 @@
         <div class="form-group">
             @Html.LabelFor(m => m.DestName, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.DestName, new { htmlAttributes = new { @class = "form-control", @disabled = "disabled" } })
+                @Html.EditorFor(model => model.DestName, new { htmlAttributes = new { @class = "form-control", @disabled = true } })
                 @Html.ValidationMessageFor(model => model.DestName, "", new { @class = "text-danger" })
             </div>
         </div>

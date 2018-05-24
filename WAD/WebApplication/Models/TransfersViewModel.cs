@@ -32,5 +32,6 @@ namespace WebApplication.Models
 
         [Display(Name = "Transaction name")]
         public string TransactionName { get; set; }
+
     }
 }

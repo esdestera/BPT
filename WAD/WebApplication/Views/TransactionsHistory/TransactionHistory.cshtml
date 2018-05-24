@@ -1,5 +1,5 @@
 ﻿
-
+@model WebApplication.Models.TransactionHistoryViewModel
 
 @{
 
@@ -37,45 +37,63 @@
 </style>
 
 <h2 align="center">Transactions history</h2>
-    <hr />
-    <div class="table-responsive mailbox-messages">
-        <table class="table table-hover table-striped">
-            <tbody>
-                <tr>
-                    <th class="mailbox-name" style="background-color:black"><a href="#">IBAN</a></th>
-                    <th class="mailbox-name" style="background-color:black"><a href="#">Date</a></th>
-                    <th class="mailbox-name" style="background-color:black"><a href="#">Currency</a></th>
-                    <th class="mailbox-name" style="background-color:black"><a href="#">Amount</a></th>
-                    <th class="mailbox-name" style="background-color:black"><a href="#">In/Out</a></th>
-                </tr>
-                <tr>
-                    <td class="mailbox-name"><a href="#">IBAN1</a></td>
-                    <td class="mailbox-name"><a href="#">Date1</a></td>
-                    <td class="mailbox-name"><a href="#">Currency1</a></td>
-                    <td class="mailbox-name"><a href="#">Amount1</a></td>
-                    <td class="mailbox-name"><a href="#"><i class="arr-right"></i></a></td>
-                </tr>
-                <tr>
-                    <td class="mailbox-name"><a href="#">IBAN2</a></td>
-                    <td class="mailbox-name"><a href="#">Date2</a></td>
-                    <td class="mailbox-name"><a href="#">Currency2</a></td>
-                    <td class="mailbox-name"><a href="#">Amount2</a></td>
-                    <td class="mailbox-name"><a href="#"><i class="arr-left"></i></a></td>
-                </tr>
-                <tr>
-                    <td class="mailbox-name"><a href="#">IBAN3</a></td>
-                    <td class="mailbox-name"><a href="#">Date3</a></td>
-                    <td class="mailbox-name"><a href="#">Currency3</a></td>
-                    <td class="mailbox-name"><a href="#">Amount3</a></td>
-                    <td class="mailbox-name"><a href="#"><i class="arr-left"></i></a></td>
-                </tr>
-                <tr>
-                    <td class="mailbox-name"><a href="#">IBAN3</a></td>
-                    <td class="mailbox-name"><a href="#">Date3</a></td>
-                    <td class="mailbox-name"><a href="#">Currency3</a></td>
-                    <td class="mailbox-name"><a href="#">Amount3</a></td>
-                    <td class="mailbox-name"><a href="#"><i class="arr-right"></i></a></td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
+<hr />
+<table class="table">
+    <tr>
+        <th>
+            Date
+        </th>
+        <th>
+            Balance
+        </th>
+        <th>
+            Sender iban
+        </th>
+        <th>
+            Sender currency
+        </th>
+        <th>
+            Receiver iban
+        </th>
+        <th>
+            Receiver currency
+        </th>
+        <th>
+            Type
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model.Transactions)
+    {
+       
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Created)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Amount)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SenderIban)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SenderCurrency)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ReceiverIban)
+        </td>
+        <td>
+
+            @Html.DisplayFor(modelItem => item.ReceiverCurrency)
+        </td>
+
+        <td>
+            @Html.DisplayFor(modelItem => item.Type)
+        </td>
+
+    </tr>
+    }
+</table>
+
+      

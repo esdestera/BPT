@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-using WebApplication.Models;
+using System.Linq;
+using System.Web;
 
 namespace WebApplication.Models
 {
-    public class TransactionHistoryViewModel
+    public class MyTransfersViewModel
     {
 
         public ICollection<TransactionInfoViewModel> Transactions { get; set; }
