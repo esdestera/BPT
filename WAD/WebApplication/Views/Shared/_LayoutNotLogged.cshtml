@@ -30,10 +30,32 @@
     @Styles.Render("~/AdminLTE/dist/css/skins")
 
 </head>
-<body >
-    <section class="content">
-        @RenderBody()
-    </section>
+<body class="hold-transition skin-blue sidebar-mini">
+    <div class="wrapper">
+        <header class="main-header" >
+           
+            <nav class="navbar navbar-static-top" role="navigation">
+                <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
+                    <span class="sr-only">Toggle navigation</span>
+                </a>
+                <div class="navbar-custom-menu">
+                    <ul class="nav navbar-nav">
+
+                        @Html.Partial("_LoginPartial")
+                    </ul>
+                </div>
+            </nav>
+        </header>
+        
+        <div class="content-wrapper bckg">
+           
+            <section class="content">
+                @RenderBody()
+            </section>
+        </div>
+    </div>
+
+
     @Scripts.Render("~/AdminLTE/plugins/jquery/js")
     @RenderSection("menu", required: false)
     @Scripts.Render("~/AdminLTE/bootstrap/js")

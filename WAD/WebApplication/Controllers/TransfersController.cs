@@ -173,7 +173,7 @@ namespace WebApplication.Controllers
                                 model.SaveToMyTransfers = true;
                                 transaction.SaveToMyTransfers = true;
                             }
-                            transaction.Created = DateTime.Today;
+                            transaction.Created = DateTime.Now;
                             db.Transactions.Add(transaction);
                             db.SaveChanges();
                             return RedirectToAction("Home", "Home");
