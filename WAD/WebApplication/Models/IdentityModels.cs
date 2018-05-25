@@ -46,6 +46,10 @@ namespace WebApplication.Models
         public DbSet<Transaction> Transactions { get; set; }
 
         public DbSet<CustomUser> CustomUsers { get; set; }
+        
+         public DbSet<Bill> Bills { get; set; }
+
+        public DbSet<Tax> Taxes { get; set; }
 
     }
 }
